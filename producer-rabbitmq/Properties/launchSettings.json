@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "producer-rabbitmq": {
+      "commandName": "Project"
+    },
+    "Container (Dockerfile)": {
+      "commandName": "Docker"
+    }
+  }
+}

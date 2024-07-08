@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  producer-rabbitmq:
+    image: ${DOCKER_REGISTRY-}producerrabbitmq
+    build:
+      context: .
+      dockerfile: producer-rabbitmq/Dockerfile
+
+  consumer-rabbitmq:
+    image: ${DOCKER_REGISTRY-}consumerrabbitmq
+    build:
+      context: .
+      dockerfile: consumer-rabbitmq/Dockerfile
+
+  rabbitmq-service:
+    container_name: rabbitmq-service
+    tty: true
+    hostname: rabbitmq
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+    image: rabbitmq:3-management
+    environment:
+      - RABBITMQ_DEFAULT_USER=user
+      - RABBITMQ_DEFAULT_PASS=password
